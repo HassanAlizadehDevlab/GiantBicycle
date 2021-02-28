@@ -3,12 +3,14 @@ package com.android.giantbicycle.login.domain.usecase
 import com.android.giantbicycle.login.domain.repository.LoginRepository
 import com.android.shared.domain.string.StringBuilder
 import com.android.shared.domain.usecase.AsyncUseCase
+import com.android.shared.domain.usecase.transformer.STransformer
 import io.reactivex.Single
 
 
 class LoginUseCase(
     private val repository: LoginRepository,
     private val stringBuilder: StringBuilder,
+    private val transformer: STransformer<LoginUseCaseResult>,
 ) : AsyncUseCase<LoginUseCaseModel, Single<LoginUseCaseResult>> {
 
     override fun execute(param: LoginUseCaseModel): Single<LoginUseCaseResult> {
@@ -25,7 +27,7 @@ class LoginUseCase(
                 result = it.result,
                 error = stringBuilder.getMessageByError(it.error)
             )
-        }
+        }.compose(transformer)
     }
 }
 

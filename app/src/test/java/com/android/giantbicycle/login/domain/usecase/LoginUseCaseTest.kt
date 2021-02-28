@@ -3,6 +3,7 @@ package com.android.giantbicycle.login.domain.usecase
 import com.android.giantbicycle.login.domain.repository.LoginRepository
 import com.android.shared.data.error.ApiResponse
 import com.android.shared.domain.string.StringBuilder
+import com.android.shared.domain.transformer.TestSTransformer
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -16,7 +17,7 @@ class LoginUseCaseTest {
 
     private val repository: LoginRepository = mockk()
     private val stringBuilder: StringBuilder = mockk()
-    private val usecase: LoginUseCase = LoginUseCase(repository, stringBuilder)
+    private val usecase: LoginUseCase = LoginUseCase(repository, stringBuilder, TestSTransformer())
 
 
     @Test
