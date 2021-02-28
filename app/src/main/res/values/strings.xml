@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">GiantBicycle</string>
+
+    <string name="username_is_null">Please fill the username field</string>
+    <string name="password_is_null">Please fill the password field</string>
+
+    <string name="wrong_credential">Wrong Credential</string>
+    <string name="internal_server_error">Internal Server Error</string>
+    <string name="unknown_error">Unknown Error</string>
 </resources>
