@@ -26,6 +26,7 @@ class LoginViewModel(
         loginUseCase.execute(LoginUseCaseModel(username, password))
             .doOnEvent { _, _ -> _isRefreshing.value = false }
             .subscribe(::loginResultConsumer)
+            .track()
     }
 
     private fun loginResultConsumer(loginResult: LoginUseCaseResult) {
