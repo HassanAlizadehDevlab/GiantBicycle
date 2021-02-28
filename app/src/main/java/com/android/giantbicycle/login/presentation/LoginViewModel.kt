@@ -15,8 +15,16 @@ class LoginViewModel(
     val response: LiveData<Int>
         get() = _response
 
+    private val _isRefreshing = MutableLiveData<Boolean>()
+    val isRefreshing: LiveData<Boolean>
+        get() = _isRefreshing
+
+
     fun login(username: String?, password: String?) {
+        _isRefreshing.value = true
+
         loginUseCase.execute(LoginUseCaseModel(username, password))
+            .doOnEvent { _, _ -> _isRefreshing.value = false }
             .subscribe(::loginResultConsumer)
     }
 

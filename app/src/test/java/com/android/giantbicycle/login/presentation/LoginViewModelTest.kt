@@ -5,6 +5,7 @@ import com.android.giantbicycle.login.domain.usecase.LoginUseCase
 import com.android.giantbicycle.login.domain.usecase.LoginUseCaseModel
 import com.android.giantbicycle.login.domain.usecase.LoginUseCaseResult
 import com.android.shared.utils.observeOnce
+import com.android.shared.utils.observe
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -77,6 +78,23 @@ class LoginViewModelTest {
 
 
         verify { messageObserver.invoke(expectedError) }
+    }
+
+    @Test
+    fun `check loading is working properly`() {
+        val username = "user"
+        val password = "password"
+        val loadingObserver: (Boolean) -> Unit = mockk()
+        viewModel.isRefreshing.observe(loadingObserver)
+        every { loadingObserver.invoke(any()) } returns Unit
+        every { loginUseCase.execute(any()) } returns Single.just(LoginUseCaseResult(result = 1))
+
+
+        viewModel.login(username, password)
+
+
+        verify { loadingObserver.invoke(false) }
+        verify { loadingObserver.invoke(true) }
     }
 
 }
