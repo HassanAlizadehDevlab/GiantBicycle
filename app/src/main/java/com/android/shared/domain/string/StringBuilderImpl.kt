@@ -3,9 +3,10 @@ package com.android.shared.domain.string
 import android.content.Context
 import com.android.giantbicycle.R
 import com.android.shared.data.error.Error
+import javax.inject.Inject
 
 
-class StringBuilderImpl (
+class StringBuilderImpl @Inject constructor(
     private val context: Context
 ) : StringBuilder {
     override fun usernameIsNull(): String = context.getString(R.string.username_is_null)

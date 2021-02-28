@@ -5,9 +5,10 @@ import com.android.shared.domain.string.StringBuilder
 import com.android.shared.domain.usecase.AsyncUseCase
 import com.android.shared.domain.usecase.transformer.STransformer
 import io.reactivex.Single
+import javax.inject.Inject
 
 
-class LoginUseCase(
+class LoginUseCase @Inject constructor(
     private val repository: LoginRepository,
     private val stringBuilder: StringBuilder,
     private val transformer: STransformer<LoginUseCaseResult>,

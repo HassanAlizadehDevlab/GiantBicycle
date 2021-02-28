@@ -2,8 +2,9 @@ package com.android.giantbicycle.login.data.network
 
 import com.android.shared.data.error.ApiResponse
 import com.android.shared.data.error.Error
+import javax.inject.Inject
 
-class ApiServiceImpl : ApiService {
+class ApiServiceImpl @Inject constructor() : ApiService {
     override fun login(username: String, password: String): ApiResponse<Int?> {
         return when (username) {
             "user" -> {

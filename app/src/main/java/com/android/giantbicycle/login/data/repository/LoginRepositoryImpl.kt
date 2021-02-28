@@ -4,8 +4,9 @@ import com.android.giantbicycle.login.data.datasource.LoginRemoteDataSource
 import com.android.giantbicycle.login.domain.repository.LoginRepository
 import com.android.shared.data.error.ApiResponse
 import io.reactivex.Single
+import javax.inject.Inject
 
-class LoginRepositoryImpl(
+class LoginRepositoryImpl @Inject constructor(
     private val dataSource: LoginRemoteDataSource
 ) : LoginRepository {
 

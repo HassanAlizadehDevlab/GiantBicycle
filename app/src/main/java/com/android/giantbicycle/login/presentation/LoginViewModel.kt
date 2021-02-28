@@ -6,8 +6,9 @@ import com.android.giantbicycle.login.domain.usecase.LoginUseCase
 import com.android.giantbicycle.login.domain.usecase.LoginUseCaseModel
 import com.android.giantbicycle.login.domain.usecase.LoginUseCaseResult
 import com.android.shared.presentation.BaseViewModel
+import javax.inject.Inject
 
-class LoginViewModel(
+class LoginViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase
 ) : BaseViewModel() {
 
