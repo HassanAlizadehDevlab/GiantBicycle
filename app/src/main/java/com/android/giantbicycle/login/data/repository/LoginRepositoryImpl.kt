@@ -11,7 +11,7 @@ class LoginRepositoryImpl @Inject constructor(
 ) : LoginRepository {
 
     override fun login(username: String, password: String): Single<ApiResponse<Int?>> {
-        return dataSource.login(
+        return dataSource.loginWithDelay(
             username = username,
             password = password
         )
