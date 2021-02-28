@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">GiantBicycle</string>
 
+    <string name="prompt_email">Enter your email or username</string>
+    <string name="action_login_in">Login in</string>
+    <string name="prompt_password">Password</string>
+
     <string name="username_is_null">Please fill the username field</string>
     <string name="password_is_null">Please fill the password field</string>
 
